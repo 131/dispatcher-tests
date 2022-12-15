@@ -1,0 +1,20 @@
+{
+  "name": "dispatcher-tests",
+  "version": "0.1.0",
+  "description": "tests suite for dispatcher",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run mocha",
+    "mocha": "node node_modules/mocha/bin/_mocha -b",
+  },
+  "author": "Francois Leurent <131.code@leurent.email>",
+  "license": "ISC",
+  "dependencies": {
+    "csv-parse": "^4.12.0",
+    "expect.js": "^0.3.1",
+    "mocha": "^3.1.2",
+    "mout": "^1.2.2",
+    "nyks": "^6.1.5"
+  },
+  "devDependencies": {}
+}
