@@ -296,12 +296,19 @@ service("Service tests suite", function() {
     res.end("ok");
   });
 
-  server.listen(0, function() {
-    port = this.address().port;
-    console.log("Server running on port", port);
+  before("Warming", function() {
+    server.listen(0, function() {
+      port = this.address().port;
+      console.log("Server running on port", port);
+    });
   });
 
+
   after("cleanup", async() => {
+    console.log("Destroying");
+
+    server.close();
+
     for(let mock of cleanups) {
       await mock.cleanup();
       try {

@@ -31,9 +31,8 @@ async function getProcessList() {
 
 class mock {
 
-  constructor(lines = {}, dispatcher = "dispatcher_cmd_x64.exe") {
+  constructor(lines = {}, dispatcher_path = "dispatcher_cmd_x64.exe") {
 
-    const dispatcher_path = path.resolve(__dirname, "../build", dispatcher);
 
     const wd = tmppath();
     mkdirpSync(wd);
