@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run mocha",
-    "mocha": "node node_modules/mocha/bin/_mocha -b",
+    "mocha": "node node_modules/mocha/bin/_mocha -b"
   },
   "author": "Francois Leurent <131.code@leurent.email>",
   "license": "ISC",
