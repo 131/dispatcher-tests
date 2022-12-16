@@ -29,7 +29,7 @@ async function getProcessList() {
 }
 
 
-class mock {
+class Mock {
 
   constructor(lines = {}, dispatcher_path = (process.env["DISPATCHER_MOCK_EXE_PATH"] || 'dispatcher_cmd_x64.exe')) {
 
@@ -76,4 +76,4 @@ class mock {
 }
 
 
-module.exports = {mock, getProcessList};
+module.exports = {Mock, getProcessList};

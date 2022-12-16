@@ -4,6 +4,7 @@
   "description": "tests suite for dispatcher",
   "main": "index.js",
   "scripts": {
+    "test": "npm run eslint",
     "eslint": "eslint .",
     "start": "npm run mocha",
     "mocha": "node node_modules/mocha/bin/_mocha -b"
