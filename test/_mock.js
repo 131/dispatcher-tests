@@ -1,7 +1,7 @@
 "use strict";
 
 const fs = require('fs');
-const path  =require('path');
+const path  = require('path');
 const csvParse = require('csv-parse/lib/sync');
 const spawn = require('child_process').spawn;
 
@@ -25,13 +25,13 @@ async function getProcessList() {
   var data =  csvParse(String(stdout).replace(/\r\r/g, '\n'), {columns : true, skip_empty_lines : true});
 
   return data;
-  
+
 }
 
 
 class mock {
 
-  constructor(lines = {}, dispatcher_path = "dispatcher_cmd_x64.exe") {
+  constructor(lines = {}, dispatcher_path = (process.env["DISPATCHER_MOCK_EXE_PATH"] || 'dispatcher_cmd_x64.exe')) {
 
 
     const wd = tmppath();
@@ -52,10 +52,10 @@ class mock {
       `<configuration>`,
       `  <appSettings>`,
       ...(Object.keys(lines).map(
-          key => `    <add key="${key}" value="${escapeHtml(lines[key])}"/>`
+        key => `    <add key="${key}" value="${escapeHtml(lines[key])}"/>`
       )),
       `  </appSettings>`,
-      `</configuration>` ].join("\n")
+      `</configuration>`].join("\n");
     fs.writeFileSync(configPath, configBody);
     console.log("Working with config", configBody);
 
@@ -66,11 +66,11 @@ class mock {
     this.configPath = configPath;
   }
 
-  
+
   async cleanup() {
     await rmrf(this.wd);
   }
-  
+
 
 
 }

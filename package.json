@@ -4,7 +4,8 @@
   "description": "tests suite for dispatcher",
   "main": "index.js",
   "scripts": {
-    "test": "npm run mocha",
+    "eslint": "eslint .",
+    "start": "npm run mocha",
     "mocha": "node node_modules/mocha/bin/_mocha -b"
   },
   "author": "Francois Leurent <131.code@leurent.email>",
@@ -15,5 +16,7 @@
     "mout": "^1.2.2",
     "nyks": "^6.1.5"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint-plugin-ivs": "^2.1.2"
+  }
 }
