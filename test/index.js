@@ -27,7 +27,6 @@ describe("Initial test suite", function() {
   });
 
 
-
   it("Should do a very simple test", async () => {
     let tmp = new Mock({
       "ARGV0" : "-p",
@@ -186,6 +185,23 @@ describe("Initial test suite", function() {
     cleanups.push(tmp);
   });
 
+  it("Should  configure output x86 logs", async () => {
+    let tmp = new Mock({OUTPUT : "%dwd%\\test.log"}, "dispatcher_cmd.exe");
+
+    let child = spawn(tmp.execPath, ["-e", "console.error(42)"]);
+    let [, stdout, stderr] = await Promise.all([wait(child), drain(child.stdout), drain(child.stderr)]);
+    stdout = String(stdout);
+    stderr = String(stderr);
+    console.log({stdout, stderr});
+
+    let challenge = fs.readFileSync(path.join(tmp.wd, 'test.log'), "utf-8");
+    expect(stdout).to.eql("");
+    expect(stderr).to.eql("");
+    expect(challenge).to.eql("42\n");
+
+
+    cleanups.push(tmp);
+  });
 
 
 });
